@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+
+        --orange: #d55e00;
+        --blue: #0072b2;
+      }
+
+      html {
+        font: 100%/1.55 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+      h3 {
+        font-size: 130%;
+      }
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+        + li {
+          margin-top: 0.6em;
+        }
+      }
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem 2rem;
+      }
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 0 auto;
+        }
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem 0.75rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: "Figure " counter(figure) ": ";
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+        }
+      }
+
+      .proposition {
+        font-size: 115%;
+        background: var(--color-neutral-95);
+        border-left: 4px solid var(--color-neutral-40);
+        padding: 0.8em 1em;
+        margin: 1em 0 1.5em;
+        border-radius: 0 0.4em 0.4em 0;
+      }
+
+      .score {
+        display: inline-block;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.9em;
+        padding: 0.05em 0.55em;
+        border-radius: 0.35em;
+        margin-right: 0.4em;
+        color: white;
+        font-weight: 600;
+        vertical-align: 1px;
+      }
+      .score.deceptive-2 {
+        background: #8b1a1a;
+      }
+      .score.deceptive-1 {
+        background: #c56a4a;
+      }
+      .score.neutral {
+        background: var(--color-neutral-50);
+      }
+      .score.earnest-1 {
+        background: #4a8faa;
+      }
+      .score.earnest-2 {
+        background: #1f5d7e;
+      }
+
+      .label {
+        font-weight: 600;
+      }
+
+      section + section {
+        margin-top: 2em;
+      }
+
+      .legend-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em 1.5em;
+        font-size: 90%;
+        color: var(--color-neutral-30);
+        margin: 0.5em 0 1em;
+        align-items: center;
+      }
+      .legend-row .swatch {
+        display: inline-block;
+        width: 0.9em;
+        height: 0.9em;
+        border-radius: 0.2em;
+        margin-right: 0.35em;
+        vertical-align: -2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Project 2</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong>Philip Chen</strong>, <em>phc006@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Proposition</h2>
+      <p class="proposition">
+        <strong>Abortion restrictions reduce abortions.</strong>
+        Both sides below use the same dataset (Guttmacher Institute,
+        <em>State Facts About Abortion</em>, 2020), but look different based on
+        the column you put on the page.
+      </p>
+
+      <p class="legend-row">
+        <span><span class="score deceptive-2">-2</span> very deceptive</span>
+        <span><span class="score deceptive-1">-1</span> mildly deceptive</span>
+        <span><span class="score neutral">&nbsp;0</span> neutral</span>
+        <span><span class="score earnest-1">+1</span> mildly earnest</span>
+        <span><span class="score earnest-2">+2</span> very earnest</span>
+      </p>
+
+      <section>
+        <h3>FOR the Proposition</h3>
+
+        <figure>
+          <img
+            src="for.png"
+            alt="Side A composite: tile map of abortion rates by state of residence with restrictive states outlined, comparison bars showing restrictive states are 1.6x lower and saw rates fall 3.4% from 2017 to 2020 while other states rose 3.3%, and a scatter of clinic absence vs. abortion rate."
+          />
+          <figcaption>
+            Side A. Restrictive states have the lowest abortion rates by state
+            of residence. Map shows the pattern, the right-side bars compare
+            averages and show the 2017 to 2020 change, and the scatter adds the
+            clinic-access angle.
+          </figcaption>
+        </figure>
+
+        <p><strong>Design Decisions and Rationale</strong></p>
+
+        <ul>
+          <li>
+            <span class="score earnest-1">+1</span>
+            <span class="label"
+              >Picked rate by state of <em>residence</em>, not by state of
+              occurrence.</span
+            >
+            Both columns are in the dataset. Residence rate counts an abortion
+            based on where the woman lives, occurrence rate based on where the
+            procedure happened. So a Missouri woman who gets an abortion in
+            Illinois shows up in MO's residence rate and IL's occurrence rate.
+            Using occurrence would have made restrictive states look near zero
+            because almost nothing happens there, so we went with the more
+            honest column. Side B is built on the gap between the two.
+          </li>
+          <li>
+            <span class="score deceptive-2">-2</span>
+            <span class="label"
+              >Title asserts causation from a cross-section.</span
+            >
+            "Restrictive States Have the Lowest Abortion Rates" is true on its
+            face but reads like the laws caused the gap. Nothing in this
+            dataset controls for age, religion, income, or how much demand
+            existed in the first place, all of which line up with the same
+            states. A flatter title would have been "Restrictive states also
+            have the lowest rates."
+          </li>
+          <li>
+            <span class="score deceptive-1">-1</span>
+            <span class="label"
+              >Sequential purple colormap with no breaks.</span
+            >
+            No quantile bins, no labeled breaks, just one continuous ramp. The
+            eye does the binning. We also outline restrictive states in orange,
+            so the conclusion ("orange = pale = it worked") gets pre-loaded
+            before the reader looks at the numbers. A flatter version would
+            use quantile bins or grouped means with the breakpoints labeled.
+          </li>
+          <li>
+            <span class="score deceptive-1">-1</span>
+            <span class="label"
+              >Two-bar averages with no error bars or population
+              weighting.</span
+            >
+            "1.6x lower" is the mean of state rates, every state counted
+            once, so Wyoming gets the same weight as California. Weighted by
+            women aged 15 to 44, the gap would shrink, since California is
+            large and permissive. The unweighted bars look bigger, so we went
+            with those.
+          </li>
+          <li>
+            <span class="score deceptive-1">-1</span>
+            <span class="label"
+              >Showed the 2017-2020 change without saying what it
+              includes.</span
+            >
+            Rates fell 3.4% on average in restrictive states, rose 3.3% in the
+            rest. The bars suggest restrictions caused the drop, but residence
+            rate also moves with teen birth rates, contraception access, and
+            demographic shifts that have nothing to do with law. We didn't
+            break any of that out.
+          </li>
+          <li>
+            <span class="score deceptive-1">-1</span>
+            <span class="label"
+              >Dropped DC from the scatter, fit a single regression line.</span
+            >
+            DC has 0% clinic-free counties and a very high abortion rate, so
+            leaving it in flattens the trendline. Calling it an "outlier" is
+            convenient. The remaining 50 points have a real correlation but
+            it's modest, and the dashed line makes it look stronger than it
+            is.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>AGAINST the Proposition</h3>
+
+        <figure>
+          <img
+            src="against.png"
+            alt="Side B composite: tile map of the percentage of state residents who traveled out of state for an abortion in 2020 (Missouri 99%, Wyoming 88%, South Dakota 84%) with restrictive states outlined in red; a horizontal bar chart of the top 15 states by travel rate; and a diverging gap chart of residence rate minus occurrence rate showing the same restrictive states as the largest exporters."
+          />
+          <figcaption>
+            Side B. Same dataset, same year. The restrictive states that
+            looked best on Side A turn out to be the ones whose residents
+            travel the most for care, and the ones that lose the most
+            residents to nearby states.
+          </figcaption>
+        </figure>
+
+        <p><strong>Design Decisions and Rationale</strong></p>
+
+        <ul>
+          <li>
+            <span class="score earnest-2">+2</span>
+            <span class="label"
+              >Switched the lead metric to "% who traveled out of state."</span
+            >
+            This is the column that breaks Side A. If restrictions had
+            reduced abortions, the travel rate would be near zero. Instead
+            Missouri is 99%, Wyoming 88%, South Dakota 84%. Nothing
+            cherry-picked about it; the numbers are stark on their own.
+          </li>
+          <li>
+            <span class="score earnest-1">+1</span>
+            <span class="label">Used the same map structure as Side A.</span>
+            Same tile grid, same purple ramp, same orange outlines on
+            restrictive states. You can flip between the two pages and the
+            states that were pale on A are dark on B. No relabeling tricks,
+            the encoding does the argument on its own.
+          </li>
+          <li>
+            <span class="score neutral">&nbsp;0</span>
+            <span class="label"
+              >Diverging "residence minus occurrence" gap chart.</span
+            >
+            The math is sound: a positive gap means a state's residents got
+            more abortions than were performed in-state, so the difference
+            had to happen somewhere else. The bars make it look like a clean
+            handoff to the neighboring state, which is a stronger claim than
+            what the data supports. Some women travel further, some don't
+            get care at all. We didn't annotate any of that.
+          </li>
+          <li>
+            <span class="score deceptive-1">-1</span>
+            <span class="label"
+              >Dropped DC from the gap chart "for scale."</span
+            >
+            DC is an extreme importer (gap of -22.8). Leaving it in
+            compresses the rest of the chart and Missouri at +9.8 ends up
+            looking small. "DC is a city, not a state" is a defensible
+            excuse, but the actual reason is to keep the picture clean.
+          </li>
+          <li>
+            <span class="score deceptive-1">-1</span>
+            <span class="label">Subtitle is assertive, not neutral.</span>
+            "Women in Restrictive States Just Cross State Lines" reads like a
+            verdict. The word "just" papers over the women who can't travel,
+            who are the actual hardest case for the proposition. A flatter
+            version: "Most residents of restrictive states obtained abortions
+            out of state."
+          </li>
+          <li>
+            <span class="score earnest-1">+1</span>
+            <span class="label"
+              >Color encoding kept consistent across pages.</span
+            >
+            Restrictive = red, other = gray, on both pages, with restrictive
+            states outlined in red on the maps for redundant emphasis. Red
+            and gray is colorblind-safe (no red-green pair) and the contrast
+            is strong even in grayscale print. Red is loaded on this topic,
+            which is part of why it works as a persuasive choice on both
+            sides: on Side A the red states read as "the ones that worked,"
+            on Side B they read as "the ones whose residents are leaving."
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+        <p>
+          The surprising part was how little we had to manipulate the data.
+          Guttmacher publishes two abortion rates per state in the same row of
+          the spreadsheet: one by residence, one by occurrence. Both real,
+          both official. Side A is built on residence, Side B is built on the
+          gap between the two (plus the travel column). Picking which column
+          to lead with did most of the persuasion. After that it was sort
+          order, dropping DC, and titles that pointed at causation without
+          quite saying it. We didn't have to make anything up.
+        </p>
+
+        <p>
+          The harder part was getting Side A to feel as solid as Side B. The
+          checkpoint feedback was that Side A came across thin: just a map
+          and a scatter. So we added two more cuts that point the same way:
+          side-by-side averages, and the 2017 to 2020 change in residence
+          rate. None of those numbers are fake. They're all real columns.
+          They just stop holding up the moment the travel column shows up
+          next to them.
+        </p>
+
+        <p>
+          Our working rule for ethical analysis: if a reader who already
+          knows the dataset would agree with the framing, that's persuasion.
+          If the framing only works because the reader doesn't know what got
+          left out, that's deception. By that test, parts of Side A are
+          borderline (residence rate is fine, the title oversells) and a few
+          moves cross the line (dropping DC, unweighted averages, no controls
+          for demand). Side B is mostly clean because it puts back the column
+          that was missing. The check we'd run on any chart: if you add the
+          missing context back in, does the story change? If yes, the chart
+          owed that context. If no, it's just emphasis, and emphasis is fair.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
