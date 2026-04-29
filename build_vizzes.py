@@ -340,7 +340,7 @@ def build_against_image(out='against.png'):
     # Section 1: travel-rate bar chart
     fig.text(0.04, 0.92, 'Top exporters: where residents leave for care',
              fontsize=13, fontweight='bold')
-    fig.text(0.04, 0.905,
+    fig.text(0.04, 0.888,
              'Top 15 states ranked by the share of residents who traveled out of state for an abortion.',
              fontsize=9.5, color='#555')
     ax_bar = fig.add_axes([0.16, 0.51, 0.76, 0.34])
@@ -349,7 +349,7 @@ def build_against_image(out='against.png'):
     # Section 2: gap chart
     fig.text(0.04, 0.43, 'Restrictive States Lose Residents to Their Neighbors',
              fontsize=13, fontweight='bold')
-    fig.text(0.04, 0.415,
+    fig.text(0.04, 0.398,
              'Difference between rate by residence and rate by occurrence. Positive = state exports patients; negative = state imports them.',
              fontsize=9.5, color='#555')
     ax_g = fig.add_axes([0.18, 0.10, 0.74, 0.29])
