@@ -331,44 +331,31 @@ def build_for_image(out='for.png'):
 # Final AGAINST composite (Side B)
 # ============================================================
 def build_against_image(out='against.png'):
-    fig = plt.figure(figsize=(14, 13.5))
+    fig = plt.figure(figsize=(14, 9.4))
     fig.patch.set_facecolor('white')
 
     fig.text(0.5, 0.975, 'SIDE B: refuting the proposition',
              ha='center', fontsize=11, color=GRAY, fontweight='bold')
 
-    # Section 1: tile map
-    fig.text(0.04, 0.945, 'Women in Restrictive States Just Cross State Lines',
-             fontsize=15.5, fontweight='bold')
-    fig.text(0.04, 0.928,
-             '% of state residents who got an abortion and traveled out of state for it (2020). '
-             'In Missouri, 99% left the state. In Wyoming, 88%. In South Dakota, 84%.',
-             fontsize=10, color='#555')
-    ax_map = fig.add_axes([0.06, 0.62, 0.88, 0.28])
-    tile_map(ax_map, df[TRAVEL], vmin=0, vmax=100, value_fmt='{:.0f}%')
-    add_dual_legend(fig, [0.37, 0.585, 0.26, 0.018], 0, 100,
-                    '% of residents who traveled out of state for care',
-                    fmt='{:.0f}%')
-
-    # Section 2: travel-rate bar chart (back from the checkpoint)
-    fig.text(0.04, 0.55, 'Top exporters: where residents leave for care',
+    # Section 1: travel-rate bar chart
+    fig.text(0.04, 0.92, 'Top exporters: where residents leave for care',
              fontsize=13, fontweight='bold')
-    fig.text(0.04, 0.535,
+    fig.text(0.04, 0.905,
              'Top 15 states ranked by the share of residents who traveled out of state for an abortion.',
              fontsize=9.5, color='#555')
-    ax_bar = fig.add_axes([0.16, 0.32, 0.76, 0.20])
+    ax_bar = fig.add_axes([0.16, 0.51, 0.76, 0.34])
     travel_bar_chart(ax_bar)
 
-    # Section 3: gap chart
-    fig.text(0.04, 0.275, 'Restrictive States Lose Residents to Their Neighbors',
+    # Section 2: gap chart
+    fig.text(0.04, 0.43, 'Restrictive States Lose Residents to Their Neighbors',
              fontsize=13, fontweight='bold')
-    fig.text(0.04, 0.260,
+    fig.text(0.04, 0.415,
              'Difference between rate by residence and rate by occurrence. Positive = state exports patients; negative = state imports them.',
              fontsize=9.5, color='#555')
-    ax_g = fig.add_axes([0.18, 0.05, 0.74, 0.20])
+    ax_g = fig.add_axes([0.18, 0.10, 0.74, 0.29])
     diverging_gap(ax_g)
 
-    fig.text(0.5, 0.010, 'Source: Guttmacher Institute, State Facts About Abortion (2020).',
+    fig.text(0.5, 0.025, 'Source: Guttmacher Institute, State Facts About Abortion (2020).',
              ha='center', fontsize=8, color='#777')
     fig.savefig(out, dpi=180, facecolor='white')
     plt.close(fig)
