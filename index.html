@@ -199,7 +199,6 @@
         <small>Project 2</small>
         Persuasive or Deceptive Visualization?
       </h1>
-
       <p><strong>Elyse Wong</strong> — <em>elw018@ucsd.edu</em></p>
       <p><strong>Philip Chen</strong> — <em>phc006@ucsd.edu</em></p>
       <p><strong>Kyle Zhao</strong> — <em>kyzhao@ucsd.edu</em></p>
@@ -249,7 +248,7 @@
             >
             Both columns are in the dataset. Residence rate counts an abortion
             based on where the woman lives, occurrence rate based on where the
-            procedure happened. So a Missouri woman who gets an abortion in
+            procedure happened. So, a Missouri woman who gets an abortion in
             Illinois shows up in MO's residence rate and IL's occurrence rate.
             Using occurrence would have made restrictive states look near zero
             because almost nothing happens there, so we went with the more
@@ -270,13 +269,12 @@
           <li>
             <span class="score deceptive-1">-1</span>
             <span class="label"
-              >Sequential purple colormap with no breaks.</span
+              >Sequential gray colormap.</span
             >
-            No quantile bins, no labeled breaks, just one continuous ramp. The
-            eye does the binning. We also outline restrictive states in orange,
-            so the conclusion ("orange = pale = it worked") gets pre-loaded
-            before the reader looks at the numbers. A flatter version would
-            use quantile bins or grouped means with the breakpoints labeled.
+            We color and outline the restrictive states in red,
+            so the conclusion ("red = restrictive = it worked") gets pre-loaded
+            before the reader looks at the numbers. Because of the distinct red color 
+            in contrast to the grey, our eyes do the binning and remember how it worked. 
           </li>
           <li>
             <span class="score deceptive-1">-1</span>
@@ -348,22 +346,20 @@
           <li>
             <span class="score earnest-1">+1</span>
             <span class="label">Used the same map structure as Side A.</span>
-            Same tile grid, same purple ramp, same orange outlines on
-            restrictive states. You can flip between the two pages and the
-            states that were pale on A are dark on B. No relabeling tricks,
-            the encoding does the argument on its own.
+            Same tile grid, same grey ramp, and red outlines on
+            restrictive states. You can look between the two graphs and the
+            states that were pale on A are dark on B.
           </li>
           <li>
             <span class="score neutral">&nbsp;0</span>
             <span class="label"
               >Diverging "residence minus occurrence" gap chart.</span
             >
-            The math is sound: a positive gap means a state's residents got
+            A positive gap means a state's residents got
             more abortions than were performed in-state, so the difference
             had to happen somewhere else. The bars make it look like a clean
             handoff to the neighboring state, which is a stronger claim than
-            what the data supports. Some women travel further, some don't
-            get care at all. We didn't annotate any of that.
+            what the data supports. Some women may not care while some knowingly travel further, but we didn't annotate any of that.
           </li>
           <li>
             <span class="score deceptive-1">-1</span>
@@ -381,7 +377,7 @@
             "Women in Restrictive States Just Cross State Lines" reads like a
             verdict. The word "just" papers over the women who can't travel,
             who are the actual hardest case for the proposition. A flatter
-            version: "Most residents of restrictive states obtained abortions
+            version would be: "Most residents of restrictive states obtained abortions
             out of state."
           </li>
           <li>
@@ -391,8 +387,8 @@
             >
             Restrictive = red, other = gray, on both pages, with restrictive
             states outlined in red on the maps for redundant emphasis. Red
-            and gray is colorblind-safe (no red-green pair) and the contrast
-            is strong even in grayscale print. Red is loaded on this topic,
+            and gray is colorblind-safe and the contrast
+            is strong. Red is loaded on this topic,
             which is part of why it works as a persuasive choice on both
             sides: on Side A the red states read as "the ones that worked,"
             on Side B they read as "the ones whose residents are leaving."
@@ -406,35 +402,31 @@
         <p>
           The surprising part was how little we had to manipulate the data.
           Guttmacher publishes two abortion rates per state in the same row of
-          the spreadsheet: one by residence, one by occurrence. Both real,
-          both official. Side A is built on residence, Side B is built on the
+          the spreadsheet by residence and by occurrence. Side A is built on residence, Side B is built on the
           gap between the two (plus the travel column). Picking which column
-          to lead with did most of the persuasion. After that it was sort
-          order, dropping DC, and titles that pointed at causation without
-          quite saying it. We didn't have to make anything up.
+          to lead with did most of the persuasion. After that, we chose
+          sort order, dropped DC, and added titles that pointed at causation a bit deceptively.
         </p>
 
         <p>
           The harder part was getting Side A to feel as solid as Side B. The
-          checkpoint feedback was that Side A came across thin: just a map
-          and a scatter. So we added two more cuts that point the same way:
-          side-by-side averages, and the 2017 to 2020 change in residence
-          rate. None of those numbers are fake. They're all real columns.
-          They just stop holding up the moment the travel column shows up
-          next to them.
+          checkpoint feedback was that Side A came across thin, with just a map
+          and a scatter. So, we added the side-by-side averages, and the 2017 to 2020 change in residence
+          rate. These numbers aren't fake, but they don't quite hold up in the presence of the
+          travel column (that we didn't include!).
         </p>
 
         <p>
-          Our working rule for ethical analysis: if a reader who already
-          knows the dataset would agree with the framing, that's persuasion.
+          Our working rule for ethical analysis is if a reader who already
+          knows the dataset would agree with the framing, it's considered persuasion.
           If the framing only works because the reader doesn't know what got
-          left out, that's deception. By that test, parts of Side A are
+          left out, it's deception. By that test, parts of Side A are
           borderline (residence rate is fine, the title oversells) and a few
           moves cross the line (dropping DC, unweighted averages, no controls
           for demand). Side B is mostly clean because it puts back the column
-          that was missing. The check we'd run on any chart: if you add the
-          missing context back in, does the story change? If yes, the chart
-          owed that context. If no, it's just emphasis, and emphasis is fair.
+          that was missing. Knowing this, the check we'd run on any chart is if you add the
+          missing context back in, does the story change? If yes, the chart is
+          owed that context. If not, it's just persuasion!
         </p>
       </section>
     </main>

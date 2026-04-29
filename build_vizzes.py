@@ -228,7 +228,7 @@ def build_for_image(out='for.png'):
     # Right-side aggregates: averages and 2017->2020 change
     restr_avg = df[df['abbr'].isin(RESTRICTIVE)][RATE_RES].mean()
     other_avg = df[~df['abbr'].isin(RESTRICTIVE) & df['abbr'].notna() & (df['abbr'] != 'DC')][RATE_RES].mean()
-    ax_a = fig.add_axes([0.62, 0.62, 0.16, 0.22])
+    ax_a = fig.add_axes([0.58, 0.60, 0.16, 0.24])
     comparison_bars(ax_a, restr_avg, other_avg, 'Per 1,000 women aged 15-44')
     ax_a.set_title(
         'Average abortion rate per 1,000 women 15-44\n'
@@ -238,31 +238,13 @@ def build_for_image(out='for.png'):
 
     restr_chg = df[df['abbr'].isin(RESTRICTIVE)][CHG_RATE].mean()
     other_chg = df[~df['abbr'].isin(RESTRICTIVE) & df['abbr'].notna() & (df['abbr'] != 'DC')][CHG_RATE].mean()
-    ax_b = fig.add_axes([0.81, 0.62, 0.16, 0.22])
+    ax_b = fig.add_axes([0.82, 0.60, 0.16, 0.24])
     comparison_bars(ax_b, restr_chg, other_chg, '% change, 2017-2020',
                     value_fmt='{:+.1f}%')
     ax_b.set_title(
-        'Average % change in abortion rate\n'
-        'since 2017, when many state TRAP\n'
-        'and trigger laws tightened',
+        'Average % change in abortion rate since\n'
+        '2017, when state regulations tightened',
         fontsize=9.5, pad=6)
-
-    # Connector lines: map's restrictive cluster -> red bar in each chart.
-    # The line literally points from the red-outlined states on the map
-    # to the red bar that summarizes them.
-    import matplotlib.lines as mlines
-    map_anchor = (0.45, 0.70)   # right edge of restrictive cluster on map
-    for bar_x in (0.648, 0.838):  # x of the red 'Restrictive states' bar in each chart
-        line = mlines.Line2D(
-            [map_anchor[0], bar_x], [map_anchor[1], 0.738],
-            transform=fig.transFigure,
-            color=RED, lw=1.0, alpha=0.45, linestyle=(0, (4, 3)),
-            zorder=0
-        )
-        fig.add_artist(line)
-    fig.text(0.555, 0.755, 'averaging the\nred-outlined\nstates →',
-             fontsize=8, color=RED, alpha=0.8, ha='center', va='center',
-             style='italic')
 
     # Bottom: scatter (taller chart + smaller dots + wider jitter to reduce overlap)
     fig.text(0.04, 0.475, 'Where there are no clinics, there are fewer abortions',
