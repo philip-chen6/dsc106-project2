@@ -215,7 +215,7 @@ def build_for_image(out='for.png'):
              fontsize=15.5, fontweight='bold')
     fig.text(0.04, 0.928,
              'Abortions per 1,000 women aged 15-44 by state of residence (2020). '
-             'Utah, South Dakota, Idaho, and Wyoming all sit below 6.5; California is above 24.',
+             'South Dakota and Utah are below 5, while New Jersey is near 29.',
              fontsize=10, color='#555')
 
     # Map (left)
